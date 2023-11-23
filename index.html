@@ -7,15 +7,49 @@
 </head>
 <body>
     <p>請依序選擇縣市、區域、鄉鎮市區</p>
-    <label for="city">縣市</label>
+    <div class="filter">
+        <label for="city">縣市</label>
     <select name="city" id="city">
-        <!-- <option value=""></option> -->
+        <option value=""></option>
     </select>
     <label for="area">區域</label>
-    <select name="area" id="area""></select>
+    <select name="area" id="area"></select>
     <label for="village">鄉鎮市區
     </label>
     <select name="village" id="village"></select>
-    <script type="module" src="all.js"></script>
+
+    </div>
+    
+    <div class="table">
+        <table>
+            <tr>
+                <th>縣市</th>
+                <th>區域</th>
+                <th>鄉鎮市區</th>
+                <th>一號得票數</th>
+                <th>二號得票數</th>
+                <th>三號得票數</th>
+                <th>有效得票數</th>
+                <th>無效得票數</th>
+                <th>總票數</th>
+                <th>投票率</th>
+
+            </tr>
+            <tbody class="table-content">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script type="module" src="all copy.js"></script>
 </body>
 </html>

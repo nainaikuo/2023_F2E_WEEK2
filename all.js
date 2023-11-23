@@ -1,5 +1,5 @@
 
-
+// 取得資料並render出citySelect    
 function init(){
     fetch('google_sheet_download.json')
         .then(function (response) {
@@ -13,17 +13,6 @@ function init(){
 }
 
 
-// function getList(data,name){
-//     console.log(name)
-//     data.forEach(i=>{
-//         if(data.indexOf(i['name'])===-1){
-//             data.push(i['name'])
-//         }else{
-//             return
-//         }
-//     })
-
-// }
 
 function getCityList(data){
     const cityList = []
@@ -35,10 +24,28 @@ function getCityList(data){
         }
     })
     renderCitySelect(cityList)
+    renderInitTable(data);
 }
 
+
+function renderInitTable(data){
+    console.log(data)
+    const table = document.querySelector(".table-content")
+    console.log(table)
+    let tableContent = ""
+    data.forEach(i=>{
+        tableContent += `<tr>
+        <td>${i.city}</td>
+        <td>${i.area}</td>
+        <td>${i.village}</td>
+        <td>${i.total_num}</td>
+    </tr>`
+    })
+    table.innerHTML=tableContent
+}
 const citySelect = document.querySelector("#city")
 const areaSelect = document.querySelector("#area")
+
 function renderCitySelect(cityList){
     let citySelectOption = "<option value='all'>全部縣市</option>"
     cityList.forEach(i=>{
@@ -46,8 +53,12 @@ function renderCitySelect(cityList){
     })
     citySelect.innerHTML = citySelectOption
 }
-citySelect.addEventListener("change",queryArea)
+citySelect.addEventListener("change",renderSelectData)
 
+
+function renderSelectData(){
+    queryArea();
+}
 function queryArea(){
     const nowSelectCity = citySelect.value
     fetch('google_sheet_download.json')
