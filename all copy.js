@@ -28,11 +28,36 @@ function init(){
             })
             const data = result ;
             // console.log(data)
-            renderSelect(data,"city")
+            initSelect(data)
             renderLeftCard(data)
         });
 }
 
+function initSelect(data){
+    let selectOption = []
+    data.forEach(i=>{
+        // console.log(i[selectId])
+        if(selectOption.indexOf(i.city)===-1){
+            selectOption.push(i.city)
+        }else{
+            return
+        }
+    })
+    // 用整理出的資料loop出HTML結構
+    // console.log(selectOption)
+    let selectOptionContent = "<option value='all'>全部</option>"
+    selectOption.forEach(selectId=>{
+        selectOptionContent+= `<option value="${selectId}">${selectId}</option>`
+    })
+    console.log(selectOptionContent)
+    const citySelect = document.querySelector(`select#city`);
+    const areaSelect = document.querySelector(`select#area`);
+    const villageSelect = document.querySelector(`select#village`);
+    // 放進select中
+    citySelect.innerHTML=selectOptionContent
+    areaSelect.innerHTML=`<option value="all">請先選擇縣市</option>`
+    villageSelect.innerHTML=`<option value="all">請先選擇區域</option>`
+}
 
 function filter(e) {
     display()
@@ -64,6 +89,7 @@ function filter(e) {
                 const filterData = result.filter(i=>i["city"]===value)
                 renderSelect(filterData,"area")
                 renderLeftCard(filterData)
+                renderDetailCard(filterData)
             }else if(id==="area"){
                 
                 // console.log(citySelectValue)
@@ -118,7 +144,7 @@ function mapFilter(e){
             const citySelector = document.querySelector("select#city")
             citySelector.value = city             
             renderSelect(filterData,"area")
-            renderSelect(filterData,"village")
+
             renderLeftCard(filterData)
             renderDetailCard(filterData,e)
             
@@ -148,9 +174,7 @@ function renderSelect(data,selectId){
     // 放進select中
     select.innerHTML=selectOptionContent
   }
-
-function renderLeftCard(data){
-    // render概況上半部
+function renderVoteNum(data){
     // console.log(data)
     // 有效
     let sumValidNum = 0
@@ -174,7 +198,7 @@ function renderLeftCard(data){
     voteRate = (sumTotalVoteNum/sumTotalNum*100).toFixed(1)
     
     const voteRateText = document.querySelector(".js-rate")
-    voteRateText.textContent= voteRate
+    voteRateText.textContent= `${voteRate}%`
     const allDetail = document.querySelector(".js-all-detail")
     allDetail.innerHTML=`
     <ul>
@@ -195,8 +219,12 @@ function renderLeftCard(data){
                                     </li>
                                 </ul>
     `
-
-
+}
+function renderLeftCard(data){
+    // render概況上半部
+    renderVoteNum(data)
+    
+    renderChart(data)
     renderPersonData(data)
 
     
@@ -278,13 +306,18 @@ function renderPersonData(data){
     
 }
 
-function renderDetailCard(data,e){
-    const cityCardTitle = e.target.id
+function renderChart (data) {
+
+    
+  }
+
+function renderDetailCard(data){
+    // const cityCardTitle = e.target.id
     let sumOneNum = 0
     let sumTwoNum = 0
     let sumThreeNum = 0
     let sumTotalValidNum = 0
-    console.log(data)
+
     data.forEach(i=>{
         sumOneNum += i.one_vote_num
         sumTwoNum += i.two_vote_num
@@ -320,7 +353,7 @@ function renderDetailCard(data,e){
             color:"#84CB98"}
     ]
     const detailCardTitle = document.querySelector(".detail-card>.title")
-    detailCardTitle.textContent = cityCardTitle
+    // detailCardTitle.textContent = cityCardTitle
     const candidateList = document.querySelector(".detail-card>.candidate-list")
     // console.log(candidateList)
     let candidateListContent = ""
@@ -365,25 +398,3 @@ clearBtn.addEventListener("click",init)
 
 
 
-
-// render表格資料
-// function renderTable(data){
-//     const table = document.querySelector(".table-content")
-
-//     let tableContent = ""
-//     data.forEach(i=>{
-//         tableContent+= `<tr>
-//         <td>${i.city}</td>
-//         <td>${i.area}</td>
-//         <td>${i.village}</td>
-//         <td>${i.one_vote_num}</td>
-//         <td>${i.two_vote_num}</td>
-//         <td>${i.three_vote_num}</td>
-//         <td>${i.valid_vote_num}</td>
-//         <td>${i.invalid_vote_num}</td>
-//         <td>${i.total_vote_num}</td>
-//         <td>${i.vote_rate}%</td>
-//     </tr>`
-//     })
-//     table.innerHTML = tableContent
-// }

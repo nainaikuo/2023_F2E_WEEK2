@@ -103,8 +103,9 @@ body{
 
         .data {
             display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
+            // justify-content: space-between;
+            // flex-wrap: wrap;
+            position: relative;
             .card {
                 background: $white-normal-default;
                 padding: 20px;
@@ -187,7 +188,8 @@ body{
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: 40%;
+                width: 45%;
+                margin-left: 120px;
 
                 svg {
                     width: 80%;
@@ -202,6 +204,9 @@ body{
                 flex-direction: column;
                 gap: 20px;
                 width: 19%;
+                position: absolute;
+                right: 0;
+                top: 0;
                 // display: none;
                 .hint-card {
                     display: flex;

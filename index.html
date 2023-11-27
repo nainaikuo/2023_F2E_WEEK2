@@ -28,9 +28,9 @@
                     <option value="all">全部</option>
                 </select>
                 <!-- <label for="area"></label> -->
-                <select class="lg" name="area" id="area"><option value="all">全部</option></select>
+                <select class="lg" name="area" id="area"><option value="all">請先選擇縣市</option></select>
                 <!-- <label for="village"></label> -->
-                <select class="lg" name="village" id="village"><option value="all">全部</option></select>
+                <select class="lg" name="village" id="village"><option value="all">請先選擇區域</option></select>
                 <button class="clear">
                     <p>清除</p>
 
@@ -52,7 +52,7 @@
                     <div class="card-content">
                         <div class="block js-all vote-rate">
                             <div class="chart">
-                                <div class="pie-chart"></div>
+                                <div class="pie-chart" id="js-vote-rate-chart"></div>
                                 <div class="title">
                                     <h6 class="js-rate"></h6>
                                     <p>投票率</p>
@@ -238,8 +238,7 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="detail-card"></div>
-                    <div class="detail-card"></div>
+
                 </div>
 
             </div>
@@ -279,7 +278,6 @@
             </tbody>
         </table>
     </div> -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script type="module" src="all copy.js"></script>
 </body>
 
