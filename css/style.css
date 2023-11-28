@@ -177,7 +177,7 @@ div, p, h1, h2, h3, h4, h5, h6 {
 .header .title {
   color: #FFFFFF;
 }
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .header {
     justify-content: center;
     padding-left: 0;
@@ -240,7 +240,7 @@ div, p, h1, h2, h3, h4, h5, h6 {
 .container .content .filter button .icon svg path {
   stroke: #FFFFFF;
 }
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .container .content .filter {
     width: 100%;
   }
@@ -271,6 +271,7 @@ div, p, h1, h2, h3, h4, h5, h6 {
   height: fit-content;
   width: 20%;
   min-width: 250px;
+  user-select: none;
 }
 .container .content .data .card .card-title {
   margin-bottom: 20px;
@@ -295,7 +296,7 @@ div, p, h1, h2, h3, h4, h5, h6 {
   width: 50%;
   min-width: 120px;
 }
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .container .content .data .card .card-content .vote-rate .chart .pie-chart {
     max-width: 72px;
     min-width: 72px;
@@ -317,26 +318,25 @@ div, p, h1, h2, h3, h4, h5, h6 {
 .container .content .data .card .card-content .vote-rate .text ul li {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 8px;
 }
 .container .content .data .card .card-content .person .chart {
   width: 50%;
   min-width: 120px;
 }
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .container .content .data .card .card-content .person .chart {
     max-width: 72px;
     min-width: auto;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .container .content .data .card {
     width: 100%;
-    padding: 5%;
+    padding: 3.5%;
   }
   .container .content .data .card .card-title {
-    margin-bottom: 10px;
+    margin-bottom: 1%;
   }
   .container .content .data .card .card-content .block {
     flex-direction: row;
@@ -389,7 +389,7 @@ div, p, h1, h2, h3, h4, h5, h6 {
   stroke-width: 3;
   stroke: #DFA175;
 }
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .container .content .data .map {
     width: 80%;
     margin-left: 0;
@@ -438,7 +438,7 @@ div, p, h1, h2, h3, h4, h5, h6 {
 .container .content .data .hints .hint-card .img img {
   width: 100%;
 }
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .container .content .data .hints {
     width: 100%;
     flex-direction: row;
@@ -469,8 +469,12 @@ div, p, h1, h2, h3, h4, h5, h6 {
   border-radius: 8px;
   width: 100%;
   min-width: 250px;
+  user-select: none;
 }
-@media (max-width: 768px) {
+.container .content .data .detail .detail-card:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+}
+@media (max-width: 960px) {
   .container .content .data .detail {
     width: 100%;
     flex-direction: row;
@@ -480,7 +484,7 @@ div, p, h1, h2, h3, h4, h5, h6 {
     height: fit-content;
   }
 }
-@media (max-width: 768px) {
+@media (max-width: 960px) {
   .container .content .data {
     flex-direction: column;
     gap: 20px;
