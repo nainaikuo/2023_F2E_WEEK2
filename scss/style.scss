@@ -138,7 +138,6 @@ body{
                             .pie-chart {
                                 width: 120px;
                                 height: 120px;
-                                border: 1px solid #000;
                             }
 
                             .title {
@@ -172,7 +171,6 @@ body{
                         .chart {
                             width: 120px;
                             height: 120px;
-                            border: 1px solid #000;
                         }
 
                         .text {
@@ -195,6 +193,24 @@ body{
                     width: 80%;
                     // border: 1px solid #000;
                     // height: 60vh;
+                    
+                    path{
+                        cursor: pointer;
+                        transition: 0.25s;
+                        &:hover{
+                            filter: drop-shadow(0 0 5px rgb(0 0 0 / 0.4));
+                        }
+                    }
+                    path.green{
+                        fill: $green-normal-default;
+                    }
+                    path.purple{
+                        fill: $purple-normal-default;
+                    }
+                    path.select{
+                        stroke: $brown-normal-default;
+                        stroke-width: 3;
+                    }
                 }
 
             }
@@ -207,6 +223,8 @@ body{
                 position: absolute;
                 right: 0;
                 top: 0;
+                opacity: 1;
+                transition: 0.5s ease-in-out;
                 // display: none;
                 .hint-card {
                     display: flex;
@@ -244,27 +262,32 @@ body{
                     }
                 }
             }
+            .detail{
+                width: 19%;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                position: absolute;
+                right: 0;
+                top: 0;
+                transition: 0.5s ease-in-out;
+                .detail-card{
+                    opacity: 0;
+                    transition: 0.3s ease-in-out;
+                    flex-direction: column;
+                    gap: 12px;
+                    border: 2px solid $green-normal-default;
+                    padding: 20px;
+                    // background: $green-light-default;
+                    border-radius: 8px;
+                }
+                
+            }
         }
     }
 }
 
-.detail{
-    width: 19%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    display: none;
-    .detail-card{
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        border: 2px solid $green-normal-default;
-        padding: 20px;
-        background: $green-light-default;
-        border-radius: 8px;
-    }
-    
-}
+
 
 .candidate-list {
     display: flex;
