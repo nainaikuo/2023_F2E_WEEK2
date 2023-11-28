@@ -19,5 +19,5 @@
       </ul>
       <h2 style="padding-bottom:16px;border-bottom: 1px solid #000;">第三方服務</h2>
       <ul>
-      <li>chart.ks</li>
+      <li>chart.js</li>
       </ul>
