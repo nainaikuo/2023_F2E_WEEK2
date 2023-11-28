@@ -6,7 +6,7 @@ const hints = document.querySelector(".hints")
 const card = document.querySelector(".card")
 
 const fadeInBlock = [...document.querySelectorAll(".fade-in")]
-console.log(fadeInBlock)
+
 window.addEventListener("DOMContentLoaded",fadeIn)
 function fadeIn (){
     fadeInBlock.forEach((i,index)=>{
@@ -33,7 +33,7 @@ function init(){
 
         })
         .then(function (result) {
-            // console.log(result)
+
             // 整理格式
             // 取出data內的物件名稱
             const keys = Object.keys(result[0])
@@ -46,7 +46,7 @@ function init(){
                 })
             })
             const data = result ;
-            // console.log(data)
+
             initSelect(data)
             renderLeftCard(data)
             removeStyle()
@@ -56,7 +56,7 @@ function init(){
 function initSelect(data){
     let selectOption = []
     data.forEach(i=>{
-        // console.log(i[selectId])
+
         if(selectOption.indexOf(i.city)===-1){
             selectOption.push(i.city)
         }else{
@@ -64,12 +64,12 @@ function initSelect(data){
         }
     })
     // 用整理出的資料loop出HTML結構
-    // console.log(selectOption)
+
     let selectOptionContent = "<option value='all'>請選擇</option>"
     selectOption.forEach(selectId=>{
         selectOptionContent+= `<option value="${selectId}">${selectId}</option>`
     })
-    // console.log(selectOptionContent)
+
     const citySelect = document.querySelector(`select#city`);
     const areaSelect = document.querySelector(`select#area`);
     const villageSelect = document.querySelector(`select#village`);
@@ -120,17 +120,31 @@ function filter(e) {
                 villageSelect.innerHTML=`<option>請先選擇區域</option>`
                 // renderSelect(filterData,"village")
             }else if(id==="area"){
+                let filterData=[]
                 if(value==="all"){
-                    console.log("aLL")
+                    filterData = result.filter(i=>i["city"]===citySelectValue)
+                    console.log("all")
+                    const villageSelect = document.querySelector(`select#village`);
+                
+                villageSelect.innerHTML=`<option>請先選擇區域</option>`
+                }else{
+                    filterData = result.filter(i=>i["city"]===citySelectValue&&i["area"]===value)
+                    renderSelect(filterData,"village")
                 }
-                // console.log(citySelectValue)
-                const filterData = result.filter(i=>i["city"]===citySelectValue&&i["area"]===value)
-                renderSelect(filterData,"village")
+
+
+                
+                
                 renderLeftCard(filterData)
                 renderDetail(filterData,"area")
             }else if(id==="village"){
+                let filterData=[]
+                if(value==="all"){
+                    filterData = result.filter(i=>i["city"]===citySelectValue&&i["area"]===areaSelectValue)
+                }else{
+                    filterData = result.filter(i=>i["city"]===citySelectValue&&i["area"]===areaSelectValue&&i["village"]===value)
+                }
                 
-                const filterData = result.filter(i=>i["city"]===citySelectValue&&i["area"]===areaSelectValue&&i["village"]===value)
                 renderLeftCard(filterData)
                 renderDetail(filterData,"village")
             }
@@ -178,7 +192,7 @@ function mapFilter(e){
 
         })
         .then(function (result) {
-            // console.log(result)
+
             // 整理格式
             // 取出data內的物件名稱
             const keys = Object.keys(result[0])
@@ -207,7 +221,7 @@ function mapFilter(e){
 function renderSelect(data,selectId){
     let selectOption = []
     data.forEach(i=>{
-        // console.log(i[selectId])
+
         if(selectOption.indexOf(i[selectId])===-1){
             selectOption.push(i[selectId])
         }else{
@@ -215,7 +229,7 @@ function renderSelect(data,selectId){
         }
     })
     // 用整理出的資料loop出HTML結構
-    // console.log(selectOption)
+
     let selectOptionContent = "<option value='all'>全部</option>"
     selectOption.forEach(selectId=>{
         selectOptionContent+= `<option value="${selectId}">${selectId}</option>`
@@ -226,7 +240,7 @@ function renderSelect(data,selectId){
     select.innerHTML=selectOptionContent
   }
 function renderVoteNum(data){
-    // console.log(data)
+
     // 有效
     let valid = 0
     // 無效
@@ -238,7 +252,7 @@ function renderVoteNum(data){
     // 投票率
 
     data.forEach((i,index)=>{
-        // console.log(index,i.valid_vote_num,sumValidNum)
+
         valid += i.valid_vote_num
         invalid += i.invalid_vote_num
         totalVote += i.total_vote_num
@@ -357,7 +371,7 @@ function renderPersonData(data){
             color:"#84CB98"}
     ]
     const candidateList = document.querySelector(".candidate-list")
-    // console.log(candidateList)
+
     allCandidateData.sort(function(a,b){
         return b.voteNum - a.voteNum
     })
@@ -433,6 +447,8 @@ function renderLeftCard(data){
 
 function renderDetail(data,name){  
     // display("on")
+    const detailArea = document.querySelector(".detail")
+    detailArea.scrollTo(0,0)
     const card = document.querySelector(`.js-detail-card-${name}`)
     card.style.opacity="1"
     card.style.display="flex"
@@ -442,9 +458,15 @@ function renderDetail(data,name){
         
         
     }else if(name==="area"){
+        if(document.querySelector("select#area").value==="all"){
+            document.querySelector(`.js-detail-card-area`).style.opacity="0"
+        }
         document.querySelector(`.js-detail-card-village`).style.opacity="0"
+    }else{
+        if(document.querySelector("select#village").value==="all"){
+            document.querySelector(`.js-detail-card-village`).style.opacity="0"
+        }
     }
-
 
     const title = data[0][name]
     let one = 0
@@ -543,81 +565,7 @@ function renderDetail(data,name){
     
 }
 
-// function renderDetailCard(data){
-//     // const cityCardTitle = e.target.id
-//     let one = 0
-//     let two = 0
-//     let sumThreeNum = 0
-//     let sumTotalValidNum = 0
 
-//     data.forEach(i=>{
-//         sumOneNum += i.one_vote_num
-//         sumTwoNum += i.two_vote_num
-//         sumThreeNum += i.three_vote_num
-//         sumTotalValidNum += i.valid_vote_num
-//     })
-//     let onePercentage = (sumOneNum/sumTotalValidNum*100).toFixed(2)
-//     let twoPercentage = (sumTwoNum/sumTotalValidNum*100).toFixed(2)
-//     let threePercentage = (sumThreeNum/sumTotalValidNum*100).toFixed(2)
-    
-
-//     const allCandidateData = 
-//     [   
-//         { no: 1,
-//         party: "親民黨",
-//         name: "宋楚瑜｜余湘", 
-//         voteNum: sumOneNum, 
-//         percentage: onePercentage,
-//         color:"#DFA175"},
-        
-//         { no: 2,
-//             party: "中國國民黨",
-//             name: "韓國瑜｜張善政", 
-//             voteNum: sumTwoNum, 
-//             percentage: twoPercentage,
-//             color:"#8894D8"},
-            
-//         { no: 3,
-//             party: "民主進步黨",
-//             name: "蔡英文｜賴清德", 
-//             voteNum: sumThreeNum, 
-//             percentage: threePercentage,
-//             color:"#84CB98"}
-//     ]
-//     const detailCardTitle = document.querySelector(".detail-card>.title")
-//     // detailCardTitle.textContent = cityCardTitle
-//     const candidateList = document.querySelector(".detail-card>.candidate-list")
-//     // console.log(candidateList)
-//     let candidateListContent = ""
-//     allCandidateData.forEach(i=>{
-//         candidateListContent += `
-//         <li>
-
-//         <div class="candidate">
-//         <div class="no xs" style="background:${i.color}">${i.no}</div>
-//             <div class="info">
-            
-//                 <p>${i.party}</p>
-            
-//                 <p class="xs">${i.name}</p>
-//             </div>
-//         </div>
-//         <div class="vote_data">
-//             <div class="percentage">
-//                 <p>${i.percentage}</p>
-//                 <p>%</p>
-//             </div>
-//             <div class="num">
-//                 <p class="xs">${i.voteNum}</p>
-//                 <p class="xs">票</p>
-//             </div>
-//         </div>
-//     </li>
-//     `
-//     })
-
-//     candidateList.innerHTML = candidateListContent
-// }
 init()
 
 filterArea.addEventListener("change",filter)
