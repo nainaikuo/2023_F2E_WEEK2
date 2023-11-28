@@ -1,4 +1,4 @@
-const dataUrl = "2020總統選舉資料.json"
+const dataUrl = "data/2020總統選舉資料.json"
 const filterArea =  document.querySelector(".filter")
 const map = document.querySelector(".map")
 const clearBtn = document.querySelector(".clear")
