@@ -1,4 +1,5 @@
 # 2023 F2E WEEK2 總統即時開票全台地圖
+<a href="https://nainaikuo.github.io/2023_F2E_WEEK2/" target="_blank">點此連結觀看前端畫面</a>
 
 <h2 style="padding-bottom:16px;border-bottom: 1px solid #000;">作品說明</h2> 
       <p>由六角學院主辦的2023年F2E競賽<br>
