@@ -4,7 +4,21 @@ const map = document.querySelector(".map")
 const clearBtn = document.querySelector(".clear")
 const hints = document.querySelector(".hints")
 const card = document.querySelector(".card")
-console.log(card)
+
+const fadeInBlock = [...document.querySelectorAll(".fade-in")]
+console.log(fadeInBlock)
+window.addEventListener("DOMContentLoaded",fadeIn)
+function fadeIn (){
+    fadeInBlock.forEach((i,index)=>{
+        setTimeout(()=>{
+            i.classList.remove("fade-in")
+        },index*90)
+
+        
+    })
+}
+
+
 card.addEventListener("click",function(e){
     const content = document.querySelector(".card-content")
     content.classList.toggle("tablet-hide")
