@@ -23,14 +23,15 @@
                 <li class="unselect"><a href="">第10任 立法委員選舉</a></li>
             </ul> -->
             <div class="filter">
-                <!-- <label for="city"></label> -->
-                <select class="lg" name="city" id="city">
-                    <option value="all">全部</option>
-                </select>
-                <!-- <label for="area"></label> -->
-                <select class="lg" name="area" id="area"><option value="all">請先選擇縣市</option></select>
-                <!-- <label for="village"></label> -->
-                <select class="lg" name="village" id="village"><option value="all">請先選擇區域</option></select>
+                <div class="row tablet-col">
+                    <div class="row">
+                        <select class="lg" name="city" id="city">
+                            <option value="all">全部</option>
+                        </select>
+                        <select class="lg" name="area" id="area"><option value="all">請先選擇縣市</option></select>
+                    </div>
+                    <select class="lg" name="village" id="village"><option value="all">請先選擇區域</option></select>
+                </div>
                 <button class="clear">
                     <p>清除</p>
 
@@ -49,14 +50,14 @@
                     <div class="card-title">
                         <h6>投票概況</h6>
                     </div>
-                    <div class="card-content">
+                    <div class="card-content tablet-hide">
                         <div class="block js-all vote-rate">
                             <div class="chart">
                                 <div class="pie-chart js-chart-area" >
                                     <canvas class="js-vote-rate-chart"></canvas>
                                 </div>
                                 <div class="title">
-                                    <h6 class="js-rate"></h6>
+                                    <h6 class="js-rate hide"></h6>
                                     <p>投票率</p>
                                 </div>
                             </div>
@@ -84,6 +85,10 @@
                             <div class="chart js-person-chart-area">
                                 <canvas class="js-person-chart"></canvas>
                             </div>
+                            <div class="title">
+                                <h6 class="js-rate hide"></h6>
+                                <p></p>
+                            </div>
                             <div class="text">
                                 <ul class="candidate-list">
                                 </ul>
@@ -93,7 +98,7 @@
 
                 </div>
                 <div class="map">
-                    <svg viewBox="0 0 510 700" >
+                    <svg viewBox="0 0 510 700">
                         <path
                             d="M510 81.1364C510 86.1693 505.946 90.2871 500.99 90.2871H489.728C484.772 90.2871 480.718 86.1693 480.718 81.1364C480.718 76.1035 484.772 71.9857 489.728 71.9857H500.99C505.946 71.9857 510 76.1035 510 81.1364Z"
                             class="green" id="宜蘭縣" />

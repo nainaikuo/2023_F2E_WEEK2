@@ -7,19 +7,38 @@ body{
     background: #F5F5F5;
     // overflow: hidden;
 }
+// .show{
+//     transform:none;
+//     opacity: 1;
+//     transition: 1s ease-in;
+// }
+.hide{
+    // display: none;
+    opacity: 0;
+    transition: 1s;
+}
+div,p,h1,h2,h3,h4,h5,h6{
+    transition: 0.5s;
+}
 .header {
     background: $blue-normal-default;
     height: 8vh;
     display: flex;
     align-items: center;
     padding-left: 47px;
+    width: 100%;
 
     .title {
         color: $white-normal-default;
     }
+    @media (max-width:768px) {
+        justify-content: center;
+        padding-left: 0;
+        
+    }
 }
 
-.container {
+.container { 
     display: flex;
     flex-direction: column;
     padding: 24px;
@@ -35,35 +54,13 @@ body{
         gap: 20px;
         width: 92%;
         max-width: 1344px;
-
-        .tab {
-            display: flex;
-            gap: 20px;
-
-            li {
-                padding-bottom: 12px;
-            }
-
-            li.select {
-                border-bottom: 4px solid $blue-normal-default;
-
-                a {
-                    color: $blue-normal-default;
-                }
-            }
-
-            li.unselect {
-                a {
-                    color: $white-dark-default;
-                }
-
-            }
-        }
-
         .filter {
             display: flex;
             gap: 20px;
-
+            .row{
+                display: flex;
+                gap: 20px;
+            }
             select {
                 padding: 4px 16px 4px 12px;
                 border: 1px solid $white-normal-hover;
@@ -85,12 +82,19 @@ body{
             button {
                 display: flex;
                 align-items: center;
+                justify-content: center;
                 background: $blue-normal-default;
                 color: $white-normal-default;
                 padding: 4px 12px;
                 border-radius: 8px;
                 gap: 8px;
-
+                transition: 0.2s;
+                &:hover{
+                    background: $purple-dark-hover;
+                }
+                &:focus{
+                    background: $blue-dark-hover;
+                }
                 .icon {
                     svg {
                         path {
@@ -99,20 +103,44 @@ body{
                     }
                 }
             }
+            @media (max-width:768px) {
+                width: 100%;
+                // flex-direction: column;
+                .tablet-col{
+                    flex: 1;
+                    flex-direction: column;
+                    .row{
+                        justify-content: space-between;
+                        
+                        select{
+                            width: 45%;
+                            gap: 0%;
+                        }
+                    }
+                    
+                }
+                button{
+                    p{
+                        display: none;
+                    }
+                }
+            }
         }
 
         .data {
             display: flex;
             // justify-content: space-between;
-            // flex-wrap: wrap;
+            flex-wrap: wrap;
             position: relative;
+            // border: 1px solid #000;
             .card {
                 background: $white-normal-default;
-                padding: 20px;
+                padding: 2%;
                 border-radius: 8px;
                 height: fit-content;
                 width: 20%;
-                max-width: 280px;
+                min-width: 250px;
+                // max-width: 280px;
                 .card-title {
                     margin-bottom: 20px;
                 }
@@ -121,7 +149,7 @@ body{
                     display: flex;
                     flex-direction: column;
                     gap: 30px;
-
+                    transition: 0.2s;
                     .block {
                         display: flex;
                         flex-direction: column;
@@ -133,11 +161,17 @@ body{
                         .chart {
                             display: flex;
                             align-items: center;
-                            gap: 20px;
+                            gap: 5%;
 
                             .pie-chart {
-                                width: 120px;
-                                height: 120px;
+                                width: 50%;
+                                min-width: 120px;
+                                @media (max-width:768px) {
+                                    max-width: 72px;
+                                    min-width: 72px;
+                                    
+                                }
+
                             }
 
                             .title {
@@ -148,6 +182,7 @@ body{
                                 h6,
                                 p {
                                     text-align: center;
+
                                 }
                             }
                         }
@@ -161,6 +196,7 @@ body{
                                 li {
                                     display: flex;
                                     align-items: center;
+                                    justify-content: space-between;
                                     gap: 8px;
                                 }
                             }
@@ -169,14 +205,43 @@ body{
 
                     .person {
                         .chart {
-                            width: 120px;
-                            height: 120px;
+                           width: 50%;
+                           min-width: 120px;
+                            @media (max-width:768px) {
+                                max-width: 72px;
+                                min-width: auto;
+                                
+                            }
                         }
+                        
 
                         .text {
                            
                         }
                     }
+                }
+                @media (max-width:768px) {
+                    width: 100%;
+                    padding: 5%;
+                    
+                    .card-title{
+                        margin-bottom: 10px;
+                        // height: 10px;
+                    }
+                    .card-content{
+                        .block{
+                            // border: 1px solid #000;
+                            flex-direction: row;
+                            align-items: center;
+                            gap: 12px;
+                            justify-content: space-between;
+                        }
+                    }
+                    .tablet-hide{
+                        height: 0;
+                        opacity: 0;
+                    }
+                    
                 }
             }
 
@@ -187,7 +252,8 @@ body{
                 align-items: center;
                 justify-content: center;
                 width: 45%;
-                margin-left: 120px;
+                min-width: 380px;
+                margin-left: 8%;
 
                 svg {
                     width: 80%;
@@ -203,29 +269,48 @@ body{
                     }
                     path.green{
                         fill: $green-normal-default;
+                        &:hover{
+                            fill: $green-normal-hover;
+                        }
                     }
                     path.purple{
                         fill: $purple-normal-default;
+                        &:hover{
+                            fill: $purple-normal-hover;
+                        }
+                    }
+                    path.select.purple{
+                        fill: $purple-normal-active;
+                    }
+                    path.select.green{
+                        fill: $green-normal-active;
+                        
                     }
                     path.select{
-                        stroke: $brown-normal-default;
                         stroke-width: 3;
+                        stroke: $brown-normal-default;
+                        
                     }
                 }
-
+                @media (max-width:768px) {
+                    width: 80%;
+                    margin-left: 0;
+                    min-width: none;
+                }
             }
 
             .hints {
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
-                width: 19%;
+                width: 20%;
                 position: absolute;
                 right: 0;
                 top: 0;
                 opacity: 1;
                 transition: 0.5s ease-in-out;
                 // display: none;
+
                 .hint-card {
                     display: flex;
                     flex-direction: column;
@@ -233,7 +318,8 @@ body{
                     gap: 52px;
                     background: $blue-light-hover;
                     border-radius: 8px;
-
+                    width: 100%;
+                    max-width: 250px;
                     .text {
                         display: flex;
                         flex-direction: column;
@@ -254,16 +340,26 @@ body{
                         display: flex;
                         align-items: center;
                         justify-content: center;
-                        padding: 24px;
+                        padding: 1%;
                         img{
                             width: 100%;
                         }
                         // padding: 32px;
                     }
                 }
+                @media (max-width:768px){
+                    width: 100%;
+                    flex-direction: row;
+                    overflow: scroll;
+                    top: auto;
+                    bottom: 0;
+                    height: fit-content;
+                    position: relative;
+                    // border: 1px solid #000;
+                }
             }
             .detail{
-                width: 19%;
+                width: 20%;
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
@@ -273,6 +369,7 @@ body{
                 transition: 0.5s ease-in-out;
                 .detail-card{
                     opacity: 0;
+                    // display: none;
                     transition: 0.3s ease-in-out;
                     flex-direction: column;
                     gap: 12px;
@@ -280,9 +377,27 @@ body{
                     padding: 20px;
                     // background: $green-light-default;
                     border-radius: 8px;
+                    width: 100%;
+                    min-width: 250px;
                 }
+                @media (max-width:768px) {
+                    width: 100%;
+                    flex-direction: row;
+                    overflow: scroll;
+                    top: auto;
+                    bottom: 0;
+                    height: fit-content;
+                    
+                    // border: 1px solid #000;
+                    
+                }
+            }
+            @media (max-width:768px) {
+                flex-direction: column;
+                gap: 20px;
                 
             }
+            
         }
     }
 }

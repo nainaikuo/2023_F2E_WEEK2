@@ -3,6 +3,12 @@ const filterArea =  document.querySelector(".filter")
 const map = document.querySelector(".map")
 const clearBtn = document.querySelector(".clear")
 const hints = document.querySelector(".hints")
+const card = document.querySelector(".card")
+console.log(card)
+card.addEventListener("click",function(e){
+    const content = document.querySelector(".card-content")
+    content.classList.toggle("tablet-hide")
+})
 // 拿資料整理格式並render
 function init(){
     display("off")
@@ -29,7 +35,6 @@ function init(){
             // console.log(data)
             initSelect(data)
             renderLeftCard(data)
-            renderDetail(data,"city")
             removeStyle()
         });
 }
@@ -96,6 +101,10 @@ function filter(e) {
                 renderSelect(filterData,"area")
                 renderLeftCard(filterData)
                 renderDetail(filterData,"city")
+                const villageSelect = document.querySelector(`select#village`);
+                
+                villageSelect.innerHTML=`<option>請先選擇區域</option>`
+                // renderSelect(filterData,"village")
             }else if(id==="area"){
                 if(value==="all"){
                     console.log("aLL")
@@ -231,22 +240,36 @@ function renderVoteNum(data){
     <ul>
                                     <li>
                                         <p>投票數</p>
-                                        <p class="xs js-total-num">${totalVote}</p>
+                                        <p class="xs js-total-num hide">${totalVote}</p>
                                         <p class="xs">票</p>
                                     </li>
                                     <li>
                                         <p>無效票數</p>
-                                        <p class="xs js-invalid-num">${invalid}</p>
+                                        <p class="xs js-invalid-num hide">${invalid}</p>
                                         <p class="xs">票</p>
                                     </li>
                                     <li>
                                         <p>有效票數</p>
-                                        <p class="xs js-valid-num">${valid}</p>
+                                        <p class="xs js-valid-num hide">${valid}</p>
                                         <p class="xs">票</p>
                                     </li>
                                 </ul>
     `
+    showHide()
+
+    
     renderVoteNumChart(total,totalVote)
+}
+
+function showHide(){
+    const hides = [...document.querySelectorAll(".hide")]
+    hides.forEach((i,index)=>{
+        setTimeout(()=>{
+            i.classList.remove("hide")
+        },index*50)
+        
+    })
+
 }
 
 
@@ -340,11 +363,11 @@ function renderPersonData(data){
         </div>
         <div class="vote_data">
             <div class="percentage">
-                <p>${i.percentage}</p>
+                <p class="hide">${i.percentage}</p>
                 <p>%</p>
             </div>
             <div class="num">
-                <p class="xs">${i.voteNum}</p>
+                <p class="xs hide">${i.voteNum}</p>
                 <p class="xs">票</p>
             </div>
         </div>
@@ -353,6 +376,7 @@ function renderPersonData(data){
     })
 
     candidateList.innerHTML = candidateListContent
+    showHide()
     renderPersonDataChart(one,two,three)
 }
 function renderPersonDataChart(one,two,three){
@@ -480,16 +504,16 @@ function renderDetail(data,name){
             
                 <p>${i.party}</p>
             
-                <p class="xs">${i.name}</p>
+                <p class="xs ">${i.name}</p>
             </div>
         </div>
         <div class="vote_data">
             <div class="percentage">
-                <p>${i.percentage}</p>
+                <p class="hide">${i.percentage}</p>
                 <p>%</p>
             </div>
             <div class="num">
-                <p class="xs">${i.voteNum}</p>
+                <p class="xs hide">${i.voteNum}</p>
                 <p class="xs">票</p>
             </div>
         </div>
@@ -501,6 +525,7 @@ function renderDetail(data,name){
 
     detailCardTitle.textContent=title
     detailCardList.innerHTML= detailCardListContent
+    showHide()
     
 }
 
