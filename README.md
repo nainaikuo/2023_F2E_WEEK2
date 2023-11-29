@@ -12,7 +12,7 @@
       <ul>
       <li>scss - scss檔案放置處，並分為font color reset及style主檔</li>
       <li>img - 網頁內圖片元素</li>
-      <li>data - 選舉資料json檔放置處</li>
+      <li>data - 選舉資料放置處</li>
       </ul>
       <h2 style="padding-bottom:16px;border-bottom: 1px solid #000;">使用技術</h2>
       <ul>
