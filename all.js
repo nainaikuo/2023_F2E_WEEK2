@@ -365,7 +365,7 @@ function renderPersonData(data) {
         <div class="no xs" style="background:${i.color}">${i.no}</div>
             <div class="info">
             
-                <p>${i.party}</p>
+                <p class="sm">${i.party}</p>
             
                 <p class="xs">${i.name}</p>
             </div>

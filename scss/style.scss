@@ -218,9 +218,6 @@ p,h1,h2,h3,h4,h5,h6{
                         }
                         
 
-                        .text {
-                           
-                        }
                     }
                 }
                 @media (max-width:960px) {
@@ -238,6 +235,9 @@ p,h1,h2,h3,h4,h5,h6{
                             align-items: center;
                             gap: 12px;
                             justify-content: space-between;
+                            .text{
+                                flex: 1;
+                            }
                         }
                     }
                     .tablet-hide{

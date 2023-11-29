@@ -150,7 +150,7 @@ p {
     font-size: 0.75rem;
   }
   .xs {
-    font-size: 0.6875rem;
+    font-size: 0.6rem;
   }
 }
 body {
@@ -346,6 +346,9 @@ p, h1, h2, h3, h4, h5, h6 {
     align-items: center;
     gap: 12px;
     justify-content: space-between;
+  }
+  .container .content .data .card .card-content .block .text {
+    flex: 1;
   }
   .container .content .data .card .tablet-hide {
     height: 0;
