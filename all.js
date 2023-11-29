@@ -359,7 +359,7 @@ function renderPersonData(data) {
         candidateListContent += `
         <li>
 
-        <div class="candidate">
+        <div class="candidate" style="border-right: 2px solid ${i.color};">
         <div class="no xs" style="background:${i.color}">${i.no}</div>
             <div class="info">
             
@@ -515,7 +515,7 @@ function renderDetail(data, name) {
         detailCardListContent +=
             `<li>
 
-        <div class="candidate">
+        <div class="candidate" style="border-right: 2px solid ${i.color.mainColor};">
         <div class="no xs" style="background:${i.color.mainColor}">${i.no}</div>
             <div class="info">
             
