@@ -42,7 +42,9 @@ function init() {
                 })
             })
             const data = result;
-
+            data.sort(function(a,b){
+                return a.city_id - b.city_id
+            })
             initSelect(data)
             renderLeftCard(data)
             removeStyle()
@@ -557,7 +559,7 @@ function showHide() {
     hides.forEach((i, index) => {
         setTimeout(() => {
             i.classList.remove("hide")
-        }, index * 50)
+        }, index * 30)
 
     })
 

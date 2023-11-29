@@ -157,12 +157,16 @@ body {
   background: #F5F5F5;
 }
 
-.fade-in {
+.fade-in, .hide {
   opacity: 0;
 }
 
-div, p, h1, h2, h3, h4, h5, h6 {
+div {
   transition: 1s;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  transition: 0.5s;
 }
 
 .header {

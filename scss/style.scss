@@ -12,12 +12,15 @@ body{
 //     opacity: 1;
 //     transition: 1s ease-in;
 // }
-.fade-in{
+.fade-in,.hide{
     // display: none;
     opacity: 0;
 }
-div,p,h1,h2,h3,h4,h5,h6{
+div{
     transition: 1s;
+}
+p,h1,h2,h3,h4,h5,h6{
+    transition: 0.5s;
 }
 .header {
     background: $blue-normal-default;
