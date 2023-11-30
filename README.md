@@ -8,6 +8,9 @@
         主題為總統開票全台地圖<br>
         使用資料為2020年總統選舉資料
       </p>
+      <h2 style="padding-bottom:16px;border-bottom: 1px solid #000;">執行流程</h2> 
+      <p>如需下載至本地執行，HTML檔案請使用live server開啟
+      </p>
     <h2 style="padding-bottom:16px;border-bottom: 1px solid #000;">使用技術</h2>
       <ul>
       <li>scss - scss檔案放置處，並分為font color reset及style主檔</li>
@@ -24,3 +27,5 @@
       <ul>
       <li>chart.js</li>
       </ul>
+
+
